@@ -28,10 +28,64 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+        itemCount: 1000,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Icon(Icons.people),
+            trailing: Icon(Icons.delete),
+            title: Text("联系人: ${index + 1}"),
+            subtitle: Text("电话: 12312312312"),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            color: Colors.grey,
+          );
+        });
+  }
+}
 
+class ListViewDemo02 extends StatelessWidget {
+  const ListViewDemo02({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text("你好, 世界");
+    return ListView.builder(
+        itemCount: 10000,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Icon(Icons.people),
+            trailing: Icon(Icons.delete),
+            title: Text("联系人: ${index + 1}"),
+            subtitle: Text("电话: 12312312312"),
+          );
+        });
+  }
+}
+
+class ListViewDemo01 extends StatelessWidget {
+  const ListViewDemo01({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+//      scrollDirection: Axis.horizontal,
+//      itemExtent: 100,
+      children: List.generate(100, (index) {
+        return ListTile(
+          leading: Icon(Icons.people),
+          trailing: Icon(Icons.delete),
+          title: Text("联系人: ${index + 1}"),
+          subtitle: Text("电话: 12312312312"),
+        );
+      }),
+    );
   }
 }
